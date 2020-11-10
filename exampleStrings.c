@@ -14,8 +14,8 @@
 #include <string.h>
 #include <stdlib.h>
  
-char array1[] = "Foo" "bar";
-char array2[] = { 'F', 'o', 'o', 'b', 'a', 'r', '\0' };
+char array1[] = "Foo" "bar";                              /* Cumple con la regla STR36-C STR11-C */ //no se le pasa el ultimo byte porque se ha declarado entero
+char array2[7] = { 'F', 'o', 'o', 'b', 'a', 'r', '\0' };   /* Cumple con la regla STR36-C STR11-C */ //Se le pasa el ultimo byte porque se ha declarado letra a letra
  
 enum { BUFFER_MAX_SIZE = 1024 };
  
@@ -25,13 +25,18 @@ World
 )foo";
 const char* s2 = "\nHello\nWorld\n";
 
+/* Manejar el error y no retornar 1 puesto que es una funcion void  */
 void gets_example_func(void) {
   char buf[BUFFER_MAX_SIZE];
  
   if (fgets(buf, sizeof(buf), stdin) == NULL) {
-        return 1;
+//        return 1;
+          fprintf(stderr, "Error in function gets_example_func\n");
+          exit(-1);
   }
-  buf[strlen(buf) - 1] = '\0';
+  buf[strlen(buf) - 1] = '\0';  
+  
+  
 }
 
 const char *get_dirname(const char *pathname) {
@@ -45,12 +50,13 @@ const char *get_dirname(const char *pathname) {
  
 
 void get_y_or_n(void) {  
-	char response[8];
+	//char response[8];  //tambien reserva mas memoria de la que se necesita.
+  char response; //duda????
 
 	printf("Continue? [y] n: ");  
-	gets(response);
-
-	if (response[0] == 'n') 
+	//gets(response); eliminado por deprecated. Regla MSC34-C
+  scanf(" %c", &response);
+	if (response == 'n') 
 		exit(0);  
 
 	return;
@@ -67,6 +73,7 @@ int main(int argc, char *argv[])
     char *ptr_char  = "new string literal";
     int size_array1 = strlen("аналитик");
     int size_array2 = 100;
+
     
    // char analitic1[size_array1]="аналитик";
    // char analitic2[size_array2]="аналитик";
@@ -78,7 +85,7 @@ int main(int argc, char *argv[])
     strcpy(key, argv[1]);  
     strcat(key, " = ");  
     strcat(key, argv[2]);
-
+    //antes de aqui salta core
 
     fgets(response,sizeof(response),stdin);
     

@@ -27,7 +27,7 @@ exampleStrings.c:68:9: warning: unused variable ‘size_array1’ [-Wunused-vari
 exampleStrings.c:(.text+0xd8): aviso: the `gets' function is dangerous and should not be used.
 *************************************************************************************
 
-Se han corregido los errores de compilación de la siguiente manera: 
+Se han corregido los warnings de compilación de la siguiente manera: 
 
 -Para el primero, se ha impreso en un fichero el error y se ha salido del método con
 la función exit(-1). La escritura del caracter '\0' en el buffer se ejecutará si no ha saltado el error. 
@@ -42,3 +42,12 @@ una variable para almacenar una letra.
 Las reglas CMU-Cert que incumple el código son la siguientes: 
 
 -Regla ARR02-C, linea 18
+
+
+
+
+Otros cambios:
+-Se ha cambiado el tipo int que guardan tamaños de cadenas por el size_t
+-Se comprueba que se introducen los argumentos necesarios para la ejecución del programa y su tamaño.
+-Los strings que se pasan como argumento serán truncados en el caso de sobrepasar la memoria reservada en el array para ellos. 
+-Si no se asigna memoria para el puntero "ptr_char" salta violación de core. Posteriormente la memoria ha de ser liberada. 

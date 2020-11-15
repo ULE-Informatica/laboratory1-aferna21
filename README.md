@@ -39,7 +39,7 @@ exampleStrings.c:(.text+0xd8): aviso: the `gets&apos; function is dangerous and 
 
 <b>Se han corregido los warnings de compilación de la siguiente manera</b>: 
 
--Para el primero, se ha impreso en un fichero el error y se ha salido del método con
+<p>-Para el primero, se ha impreso en un fichero el error y se ha salido del método con
 la función exit(-1). La escritura del caracter '\0' en el buffer se ejecutará si no ha saltado el error. 
 
 -Para el segundo se ha sustituido la función gets, la cual recomienda el parámetro de compilación
@@ -47,7 +47,7 @@ la función exit(-1). La escritura del caracter '\0' en el buffer se ejecutará 
 Posteriormente, se trabajará con él. Además, la variable response era un array de tamaño 8, cuando solamente se requería
 una variable para almacenar una letra.
 
--Las variables que no son utilizadas han sido comentadas.
+-Las variables que no son utilizadas han sido comentadas.</p>
 
 
 
@@ -139,30 +139,31 @@ Una vez arreglados los errores de compilación y fallos de programación, se pru
 
 
 <b>gcc -Wall -std=c99 exampleStrings.c</b>
-exampleStrings.c:22:19: warning: missing terminating " character
- const char* s1 = R"foo(
-                   ^
-exampleStrings.c:22:19: error: missing terminating " character
- const char* s1 = R"foo(
-                   ^~~~~
-exampleStrings.c:22:18: error: ‘R’ undeclared here (not in a function)
- const char* s1 = R"foo(
-                  ^
-exampleStrings.c:23:1: error: expected ‘,’ or ‘;’ before ‘Hello’
- Hello
- ^~~~~
-exampleStrings.c:25:5: warning: missing terminating " character
- )foo";
-     ^
-exampleStrings.c:25:5: error: missing terminating " character
- )foo";
-     ^~
-exampleStrings.c: In function ‘main’:
-exampleStrings.c:118:11: error: ‘s2’ undeclared (first use in this function); did you mean ‘s1’?
-     puts (s2);
-           ^~
-           s1
-exampleStrings.c:118:11: note: each undeclared identifier is reported only once for each function it appears in
+<pre><b>exampleStrings.c:22:19:</b> <font color="#CD00CD"><b>warning: </b></font>missing terminating &quot; character
+ const char* s1 = R<font color="#CD00CD"><b>&quot;</b></font>foo(
+                   <font color="#CD00CD"><b>^</b></font>
+<b>exampleStrings.c:22:19:</b> <font color="#D41C1C"><b>error: </b></font>missing terminating &quot; character
+ const char* s1 = R<font color="#D41C1C"><b>&quot;foo(</b></font>
+                   <font color="#D41C1C"><b>^~~~~</b></font>
+<b>exampleStrings.c:22:18:</b> <font color="#D41C1C"><b>error: </b></font>‘<b>R</b>’ undeclared here (not in a function)
+ const char* s1 = <font color="#D41C1C"><b>R</b></font>&quot;foo(
+                  <font color="#D41C1C"><b>^</b></font>
+<b>exampleStrings.c:23:1:</b> <font color="#D41C1C"><b>error: </b></font>expected ‘<b>,</b>’ or ‘<b>;</b>’ before ‘<b>Hello</b>’
+ <font color="#D41C1C"><b>Hello</b></font>
+ <font color="#D41C1C"><b>^~~~~</b></font>
+<b>exampleStrings.c:25:5:</b> <font color="#CD00CD"><b>warning: </b></font>missing terminating &quot; character
+ )foo<font color="#CD00CD"><b>&quot;</b></font>;
+     <font color="#CD00CD"><b>^</b></font>
+<b>exampleStrings.c:25:5:</b> <font color="#D41C1C"><b>error: </b></font>missing terminating &quot; character
+ )foo<font color="#D41C1C"><b>&quot;;</b></font>
+     <font color="#D41C1C"><b>^~</b></font>
+<b>exampleStrings.c:</b> In function ‘<b>main</b>’:
+<b>exampleStrings.c:118:11:</b> <font color="#D41C1C"><b>error: </b></font>‘<b>s2</b>’ undeclared (first use in this function); did you mean ‘<b>s1</b>’?
+     puts (<font color="#D41C1C"><b>s2</b></font>);
+           <font color="#D41C1C"><b>^~</b></font>
+           <font color="#00CD00">s1</font>
+<b>exampleStrings.c:118:11:</b> <font color="#00CDCD"><b>note: </b></font>each undeclared identifier is reported only once for each function it appears in
+</pre>
 
 <b>g++ -Wall -std=c11 exampleStrings.c</b>
 <pre><font color="#00CD00"><b>adri@adri-Lenovo-ideapad-700-15ISK</b></font>:<font color="#0000CD"><b>~/Escritorio/DPS/laboratory1-aferna21</b></font>$ g++ -Wall -std=c11 exampleStrings.c 

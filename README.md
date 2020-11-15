@@ -202,3 +202,4 @@ Una vez arreglados los errores de compilación y fallos de programación, se pru
 </pre>
 
 <h1>Conclusiones</h1>
+A mayores del número de reglas y recomendaciones, el principal problema de este código eran las comprobaciones de longitudes con los strings y la gestión de la memoria de los punteros. Estos fallos de programación podían llegar a hacer que el código compilase sin ningún error ni warning pero que diese errores a nivel de core. También cabe observar las diferentes salidas de compilación al realizar ésta con diferentes parámetros y estándares. 

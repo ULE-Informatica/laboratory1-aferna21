@@ -9,7 +9,7 @@ Para la realización de esta práctica voy a realizar los siguientes pasos:
 5) Conclusiones de la práctica.
 
 <h1>Primera compilación</h1> 
-La primera compilación ha sido realizada a través del comando <b>gcc -Wall exampleStrings.c<\b>
+La primera compilación ha sido realizada a través del comando <b>gcc -Wall exampleStrings.c</b>
 <pre><font color="#00CD00"><b>adri@adri-Lenovo-ideapad-700-15ISK</b></font>:<font color="#0000CD"><b>~/Escritorio/DPS/laboratory1-aferna21</b></font>$ gcc -Wall exampleStrings.c 
 <b>exampleStrings.c:</b> In function ‘<b>gets_example_func</b>’:
 <b>exampleStrings.c:32:16:</b> <font color="#CD00CD"><b>warning: </b></font>‘<b>return</b>’ with a value, in function returning void
@@ -194,4 +194,4 @@ Una vez arreglados los errores de compilación y fallos de programación, se pru
                       <font color="#D41C1C"><b>~~~~~~^~~~~~~~~~~~~~~~~~~</b></font>
 </pre>
 
-<h1>Conclusiones
+<h1>Conclusiones</h1>

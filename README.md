@@ -59,6 +59,8 @@ una variable para almacenar una letra.
 
 -Los strings que se pasan como argumento serán truncados en el caso de sobrepasar la memoria reservada en el array para ellos. 
 
+-La función get_dirname ahora reserva la memoria adecuada para el puntero y posteriormente la libera. 
+
 -Si no se asigna memoria para el puntero "ptr_char" salta violación de core. Posteriormente la memoria ha de ser liberada. 
 
 -Se ha cambiado la función fgets del main por un scanf debido a que si se sobrepasaba la longitud de la variable response, en la cual
@@ -73,7 +75,12 @@ de argumento para el tamaño el sizeof del array fuente y no del array destino, 
 se copia a esa memoria liberada con la función strcpy (si se hace ptr_char = "lo que sea", pierde la referencia a la memoria liberada y el free dará error). Una vez realizados esos cambios
 acceder a una posición de ese puntero y modificar el char que contiene funciona sin problema. Al final, será liberada la memoria. 
 
-<h1>Reglas y recomendaciones
+<h1>Reglas y recomendaciones</h1>
+-Línea 47: Incumple la regla STR30-C: Do not attempt to modify string literals. Esa misma función incumple también la regla MEM31-C. Free dynamically allocated memory when no longer needed.
+-Línea 59: Incumple la regla MSC34-C: Do not use deprecated or obsolescent functions.
+-Línea 82: Incumple la regla MEM32-C.Detect and handle memory allocation errors.
+-Líneas 90, 91 y 92: Incumplen la regla  STR11-C. Do not specify the bound of a character array initialized with a string literal.
+-Línea 131: Incumple la regla STR30-C. Do not attempt to modify string literals. 
 
 
 <h1>Compilación con otros estándares</h1>

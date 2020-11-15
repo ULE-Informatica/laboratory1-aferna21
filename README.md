@@ -1,37 +1,43 @@
 # dps-lab-1
 Laboratory 1, Adrián Fernández Álvarez.
 
+Para la realización de esta práctica voy a realizar los siguientes pasos:
+1) Compilar el código con gcc -Wall y arreglar los warnings generados.
+2) Ejecutar el código y arreglar los errores de programación. 
+3) Enumerar las reglas y recomendaciones que no se cumplen
+4) Compilar el código arreglado con diferentes herramientas.
+5) Conclusiones de la práctica.
 
-Primero compilo con gcc -Wall. Los warnings son los siguientes: 
+<h1>Primera compilación</h1> 
+La primera compilación ha sido realizada a través del comando <b>gcc -Wall exampleStrings.c<\b>
+<pre><font color="#00CD00"><b>adri@adri-Lenovo-ideapad-700-15ISK</b></font>:<font color="#0000CD"><b>~/Escritorio/DPS/laboratory1-aferna21</b></font>$ gcc -Wall exampleStrings.c 
+<b>exampleStrings.c:</b> In function ‘<b>gets_example_func</b>’:
+<b>exampleStrings.c:32:16:</b> <font color="#CD00CD"><b>warning: </b></font>‘<b>return</b>’ with a value, in function returning void
+         return <font color="#CD00CD"><b>1</b></font>;
+                <font color="#CD00CD"><b>^</b></font>
+<b>exampleStrings.c:28:6:</b> <font color="#00CDCD"><b>note: </b></font>declared here
+ void <font color="#00CDCD"><b>gets_example_func</b></font>(void) {
+      <font color="#00CDCD"><b>^~~~~~~~~~~~~~~~~</b></font>
+<b>exampleStrings.c:</b> In function ‘<b>get_y_or_n</b>’:
+<b>exampleStrings.c:51:3:</b> <font color="#CD00CD"><b>warning: </b></font>implicit declaration of function ‘<b>gets</b>’; did you mean ‘<b>fgets</b>’? [<font color="#CD00CD"><b>-Wimplicit-function-declaration</b></font>]
+   <font color="#CD00CD"><b>gets</b></font>(response);
+   <font color="#CD00CD"><b>^~~~</b></font>
+   <font color="#00CD00">fgets</font>
+<b>exampleStrings.c:</b> In function ‘<b>main</b>’:
+<b>exampleStrings.c:73:10:</b> <font color="#CD00CD"><b>warning: </b></font>unused variable ‘<b>analitic3</b>’ [<font color="#CD00CD"><b>-Wunused-variable</b></font>]
+     char <font color="#CD00CD"><b>analitic3</b></font>[100]=&quot;аналитик&quot;;
+          <font color="#CD00CD"><b>^~~~~~~~~</b></font>
+<b>exampleStrings.c:69:9:</b> <font color="#CD00CD"><b>warning: </b></font>unused variable ‘<b>size_array2</b>’ [<font color="#CD00CD"><b>-Wunused-variable</b></font>]
+     int <font color="#CD00CD"><b>size_array2</b></font> = 100;
+         <font color="#CD00CD"><b>^~~~~~~~~~~</b></font>
+<b>exampleStrings.c:68:9:</b> <font color="#CD00CD"><b>warning: </b></font>unused variable ‘<b>size_array1</b>’ [<font color="#CD00CD"><b>-Wunused-variable</b></font>]
+     int <font color="#CD00CD"><b>size_array1</b></font> = strlen(&quot;аналитик&quot;);
+         <font color="#CD00CD"><b>^~~~~~~~~~~</b></font>
+/tmp/cchNqrCC.o: En la función `get_y_or_n&apos;:
+exampleStrings.c:(.text+0xd8): aviso: the `gets&apos; function is dangerous and should not be used.
+</pre>
 
-************************************************************************************
-exampleStrings.c: In function ‘gets_example_func’:
-exampleStrings.c:32:16: warning: ‘return’ with a value, in function returning void
-         return 1;
-                ^
-exampleStrings.c:28:6: note: declared here
- void gets_example_func(void) {
-      ^~~~~~~~~~~~~~~~~
-exampleStrings.c: In function ‘get_y_or_n’:
-exampleStrings.c:51:2: warning: implicit declaration of function ‘gets’; did you mean ‘fgets’? [-Wimplicit-function-declaration]
-  gets(response);
-  ^~~~
-  fgets
-exampleStrings.c: In function ‘main’:
-exampleStrings.c:73:10: warning: unused variable ‘analitic3’ [-Wunused-variable]
-     char analitic3[100]="аналитик";
-          ^~~~~~~~~
-exampleStrings.c:69:9: warning: unused variable ‘size_array2’ [-Wunused-variable]
-     int size_array2 = 100;
-         ^~~~~~~~~~~
-exampleStrings.c:68:9: warning: unused variable ‘size_array1’ [-Wunused-variable]
-     int size_array1 = strlen("аналитик");
-         ^~~~~~~~~~~
-/tmp/ccO4HnZZ.o: En la función `get_y_or_n':
-exampleStrings.c:(.text+0xd8): aviso: the `gets' function is dangerous and should not be used.
-*************************************************************************************
-
-Se han corregido los warnings de compilación de la siguiente manera: 
+<b>Se han corregido los warnings de compilación de la siguiente manera</b>: 
 
 -Para el primero, se ha impreso en un fichero el error y se ha salido del método con
 la función exit(-1). La escritura del caracter '\0' en el buffer se ejecutará si no ha saltado el error. 
@@ -45,7 +51,7 @@ una variable para almacenar una letra.
 
 
 
-Otros cambios en el código en cuanto a malas prácticas o errores:
+<h1>Errores de programación corregidos</h1>
 
 -Se ha cambiado el tipo int que guardan tamaños de cadenas por el size_t
 
@@ -67,10 +73,122 @@ de argumento para el tamaño el sizeof del array fuente y no del array destino, 
 se copia a esa memoria liberada con la función strcpy (si se hace ptr_char = "lo que sea", pierde la referencia a la memoria liberada y el free dará error). Una vez realizados esos cambios
 acceder a una posición de ese puntero y modificar el char que contiene funciona sin problema. Al final, será liberada la memoria. 
 
+<h1>Reglas y recomendaciones<\h1>
 
 
+<h1>Compilación con otros estándares</h1>
 Una vez arreglados los errores de compilación y fallos de programación, se prueba a compilar con otros estándares: 
 
+<b>gcc exampleStrings.c</b>
 <pre><font color="#00CD00"><b>adri@adri-Lenovo-ideapad-700-15ISK</b></font>:<font color="#0000CD"><b>~/Escritorio/DPS/laboratory1-aferna21</b></font>$ gcc exampleStrings.c 
 <font color="#00CD00"><b>adri@adri-Lenovo-ideapad-700-15ISK</b></font>:<font color="#0000CD"><b>~/Escritorio/DPS/laboratory1-aferna21</b></font>$ 
 </pre>
+
+<b>g++ exampleStrings.c</b>
+<pre><font color="#00CD00"><b>adri@adri-Lenovo-ideapad-700-15ISK</b></font>:<font color="#0000CD"><b>~/Escritorio/DPS/laboratory1-aferna21</b></font>$ g++ exampleStrings.c 
+<b>exampleStrings.c:</b> In function ‘<b>const char* get_dirname(const char*)</b>’:
+<b>exampleStrings.c:44:18:</b> <font color="#D41C1C"><b>error: </b></font>invalid conversion from ‘<b>const char*</b>’ to ‘<b>char*</b>’ [<font color="#D41C1C"><b>-fpermissive</b></font>]
+   slash = <font color="#D41C1C"><b>strrchr(pathname, &apos;/&apos;)</b></font>;
+           <font color="#D41C1C"><b>~~~~~~~^~~~~~~~~~~~~~~</b></font>
+<b>exampleStrings.c:</b> In function ‘<b>int main(int, char**)</b>’:
+<b>exampleStrings.c:81:28:</b> <font color="#D41C1C"><b>error: </b></font>invalid conversion from ‘<b>void*</b>’ to ‘<b>char*</b>’ [<font color="#D41C1C"><b>-fpermissive</b></font>]
+     char *ptr_char = <font color="#D41C1C"><b>malloc(sizeof(char) * 24)</b></font>;
+                      <font color="#D41C1C"><b>~~~~~~^~~~~~~~~~~~~~~~~~~</b></font>
+<font color="#00CD00"><b>adri@adri-Lenovo-ideapad-700-15ISK</b></font>:<font color="#0000CD"><b>~/Escritorio/DPS/laboratory1-aferna21</b></font>$ 
+</pre>
+
+<b>g++ -Wall exampleStrings.c</b>
+<pre><font color="#00CD00"><b>adri@adri-Lenovo-ideapad-700-15ISK</b></font>:<font color="#0000CD"><b>~/Escritorio/DPS/laboratory1-aferna21</b></font>$ g++ -Wall exampleStrings.c 
+<b>exampleStrings.c:</b> In function ‘<b>const char* get_dirname(const char*)</b>’:
+<b>exampleStrings.c:44:18:</b> <font color="#D41C1C"><b>error: </b></font>invalid conversion from ‘<b>const char*</b>’ to ‘<b>char*</b>’ [<font color="#D41C1C"><b>-fpermissive</b></font>]
+   slash = <font color="#D41C1C"><b>strrchr(pathname, &apos;/&apos;)</b></font>;
+           <font color="#D41C1C"><b>~~~~~~~^~~~~~~~~~~~~~~</b></font>
+<b>exampleStrings.c:</b> In function ‘<b>int main(int, char**)</b>’:
+<b>exampleStrings.c:81:28:</b> <font color="#D41C1C"><b>error: </b></font>invalid conversion from ‘<b>void*</b>’ to ‘<b>char*</b>’ [<font color="#D41C1C"><b>-fpermissive</b></font>]
+     char *ptr_char = <font color="#D41C1C"><b>malloc(sizeof(char) * 24)</b></font>;
+</pre>
+
+<b>gcc -Wall -std=c11 exampleStrings.c</b>
+<pre><font color="#00CD00"><b>adri@adri-Lenovo-ideapad-700-15ISK</b></font>:<font color="#0000CD"><b>~/Escritorio/DPS/laboratory1-aferna21</b></font>$ gcc -Wall -std=c11 exampleStrings.c 
+<b>exampleStrings.c:22:19:</b> <font color="#CD00CD"><b>warning: </b></font>missing terminating &quot; character
+ const char* s1 = R<font color="#CD00CD"><b>&quot;</b></font>foo(
+                   <font color="#CD00CD"><b>^</b></font>
+<b>exampleStrings.c:22:19:</b> <font color="#D41C1C"><b>error: </b></font>missing terminating &quot; character
+ const char* s1 = R<font color="#D41C1C"><b>&quot;foo(</b></font>
+                   <font color="#D41C1C"><b>^~~~~</b></font>
+<b>exampleStrings.c:22:18:</b> <font color="#D41C1C"><b>error: </b></font>‘<b>R</b>’ undeclared here (not in a function)
+ const char* s1 = <font color="#D41C1C"><b>R</b></font>&quot;foo(
+                  <font color="#D41C1C"><b>^</b></font>
+<b>exampleStrings.c:23:1:</b> <font color="#D41C1C"><b>error: </b></font>expected ‘<b>,</b>’ or ‘<b>;</b>’ before ‘<b>Hello</b>’
+ <font color="#D41C1C"><b>Hello</b></font>
+ <font color="#D41C1C"><b>^~~~~</b></font>
+<b>exampleStrings.c:25:5:</b> <font color="#CD00CD"><b>warning: </b></font>missing terminating &quot; character
+ )foo<font color="#CD00CD"><b>&quot;</b></font>;
+     <font color="#CD00CD"><b>^</b></font>
+<b>exampleStrings.c:25:5:</b> <font color="#D41C1C"><b>error: </b></font>missing terminating &quot; character
+ )foo<font color="#D41C1C"><b>&quot;;</b></font>
+     <font color="#D41C1C"><b>^~</b></font>
+<b>exampleStrings.c:</b> In function ‘<b>main</b>’:
+<b>exampleStrings.c:118:11:</b> <font color="#D41C1C"><b>error: </b></font>‘<b>s2</b>’ undeclared (first use in this function); did you mean ‘<b>s1</b>’?
+     puts (<font color="#D41C1C"><b>s2</b></font>);
+           <font color="#D41C1C"><b>^~</b></font>
+           <font color="#00CD00">s1</font>
+<b>exampleStrings.c:118:11:</b> <font color="#00CDCD"><b>note: </b></font>each undeclared identifier is reported only once for each function it appears in
+</pre>
+
+
+
+<b>gcc -Wall -std=c99 exampleStrings.c</b>
+exampleStrings.c:22:19: warning: missing terminating " character
+ const char* s1 = R"foo(
+                   ^
+exampleStrings.c:22:19: error: missing terminating " character
+ const char* s1 = R"foo(
+                   ^~~~~
+exampleStrings.c:22:18: error: ‘R’ undeclared here (not in a function)
+ const char* s1 = R"foo(
+                  ^
+exampleStrings.c:23:1: error: expected ‘,’ or ‘;’ before ‘Hello’
+ Hello
+ ^~~~~
+exampleStrings.c:25:5: warning: missing terminating " character
+ )foo";
+     ^
+exampleStrings.c:25:5: error: missing terminating " character
+ )foo";
+     ^~
+exampleStrings.c: In function ‘main’:
+exampleStrings.c:118:11: error: ‘s2’ undeclared (first use in this function); did you mean ‘s1’?
+     puts (s2);
+           ^~
+           s1
+exampleStrings.c:118:11: note: each undeclared identifier is reported only once for each function it appears in
+
+<b>g++ -Wall -std=c11 exampleStrings.c</b>
+<pre><font color="#00CD00"><b>adri@adri-Lenovo-ideapad-700-15ISK</b></font>:<font color="#0000CD"><b>~/Escritorio/DPS/laboratory1-aferna21</b></font>$ g++ -Wall -std=c11 exampleStrings.c 
+<b>cc1plus:</b> <font color="#CD00CD"><b>warning: </b></font>command line option ‘<b>-std=c11</b>’ is valid for C/ObjC but not for C++
+<b>exampleStrings.c:</b> In function ‘<b>const char* get_dirname(const char*)</b>’:
+<b>exampleStrings.c:44:18:</b> <font color="#D41C1C"><b>error: </b></font>invalid conversion from ‘<b>const char*</b>’ to ‘<b>char*</b>’ [<font color="#D41C1C"><b>-fpermissive</b></font>]
+   slash = <font color="#D41C1C"><b>strrchr(pathname, &apos;/&apos;)</b></font>;
+           <font color="#D41C1C"><b>~~~~~~~^~~~~~~~~~~~~~~</b></font>
+<b>exampleStrings.c:</b> In function ‘<b>int main(int, char**)</b>’:
+<b>exampleStrings.c:81:28:</b> <font color="#D41C1C"><b>error: </b></font>invalid conversion from ‘<b>void*</b>’ to ‘<b>char*</b>’ [<font color="#D41C1C"><b>-fpermissive</b></font>]
+     char *ptr_char = <font color="#D41C1C"><b>malloc(sizeof(char) * 24)</b></font>;
+                      <font color="#D41C1C"><b>~~~~~~^~~~~~~~~~~~~~~~~~~</b></font>
+</pre>
+
+<b>g++ -Wall -std=c99 exampleStrings.c</b> 
+
+<pre><font color="#00CD00"><b>adri@adri-Lenovo-ideapad-700-15ISK</b></font>:<font color="#0000CD"><b>~/Escritorio/DPS/laboratory1-aferna21</b></font>$ g++ -Wall -std=c99 exampleStrings.c 
+<b>cc1plus:</b> <font color="#CD00CD"><b>warning: </b></font>command line option ‘<b>-std=c99</b>’ is valid for C/ObjC but not for C++
+<b>exampleStrings.c:</b> In function ‘<b>const char* get_dirname(const char*)</b>’:
+<b>exampleStrings.c:44:18:</b> <font color="#D41C1C"><b>error: </b></font>invalid conversion from ‘<b>const char*</b>’ to ‘<b>char*</b>’ [<font color="#D41C1C"><b>-fpermissive</b></font>]
+   slash = <font color="#D41C1C"><b>strrchr(pathname, &apos;/&apos;)</b></font>;
+           <font color="#D41C1C"><b>~~~~~~~^~~~~~~~~~~~~~~</b></font>
+<b>exampleStrings.c:</b> In function ‘<b>int main(int, char**)</b>’:
+<b>exampleStrings.c:81:28:</b> <font color="#D41C1C"><b>error: </b></font>invalid conversion from ‘<b>void*</b>’ to ‘<b>char*</b>’ [<font color="#D41C1C"><b>-fpermissive</b></font>]
+     char *ptr_char = <font color="#D41C1C"><b>malloc(sizeof(char) * 24)</b></font>;
+                      <font color="#D41C1C"><b>~~~~~~^~~~~~~~~~~~~~~~~~~</b></font>
+</pre>
+
+<h1>Conclusiones<\h1>

@@ -73,11 +73,13 @@ de argumento para el tamaño el sizeof del array fuente y no del array destino, 
 se copia a esa memoria liberada con la función strcpy (si se hace ptr_char = "lo que sea", pierde la referencia a la memoria liberada y el free dará error). Una vez realizados esos cambios
 acceder a una posición de ese puntero y modificar el char que contiene funciona sin problema. Al final, será liberada la memoria. 
 
-<h1>Reglas y recomendaciones<\h1>
+<h1>Reglas y recomendaciones
 
 
 <h1>Compilación con otros estándares</h1>
+
 Una vez arreglados los errores de compilación y fallos de programación, se prueba a compilar con otros estándares: 
+
 
 <b>gcc exampleStrings.c</b>
 <pre><font color="#00CD00"><b>adri@adri-Lenovo-ideapad-700-15ISK</b></font>:<font color="#0000CD"><b>~/Escritorio/DPS/laboratory1-aferna21</b></font>$ gcc exampleStrings.c 
@@ -192,4 +194,4 @@ Una vez arreglados los errores de compilación y fallos de programación, se pru
                       <font color="#D41C1C"><b>~~~~~~^~~~~~~~~~~~~~~~~~~</b></font>
 </pre>
 
-<h1>Conclusiones<\h1>
+<h1>Conclusiones
